@@ -35,6 +35,10 @@ db.Comment_like_subject = require('./comment_like_subjectModel')(sequelize, Sequ
 db.User.hasMany(db.Schedule, { foreignKey: 'userIdx' },);
 db.Schedule.belongsTo(db.User, { foreignKey: 'userIdx' },);
 
+/** 1:N University : User */
+db.University.hasMany(db.User, { foreignKey: 'universityIdx' },);
+db.User.belongsTo(db.University, { foreignKey: 'universityIdx' },);
+
 /** 1:N Schedule : Schedule_personal */
 db.Schedule.hasMany(db.Schedule_personal, { foreignKey: 'scheduleIdx' },);
 db.Schedule_personal.belongsTo(db.Schedule, { foreignKey: 'scheduleIdx' },);

@@ -34,12 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    school: {
-      type: DataTypes.STRING(50),
-    },
-    major: {
-      type: DataTypes.STRING(45),
-    },
     check: {
       type: DataTypes.BOOLEAN,
       defaultValue: 0,
