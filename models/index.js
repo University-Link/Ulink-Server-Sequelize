@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'test';
 const config = require('../config/config')[env];
 const db = {};
 
@@ -134,5 +134,9 @@ db.Comment_school.belongsToMany(db.User, { through: db.Comment_like_school, fore
 /** N:M User : Comment_subject (Comment_like_subject) */
 db.User.belongsToMany(db.Comment_subject, { through: db.Comment_like_subject, foreignKey: 'commentIdx' },);
 db.Comment_subject.belongsToMany(db.User, { through: db.Comment_like_subject, foreignKey: 'userIdx' },);
+
+/** N:M User : notice (notice_user) */
+db.User.belongsToMany(db.Notice, { through: db.Like_school, foreignKey: 'noticeIdx' },);
+db.Notice.belongsToMany(db.User, { through: db.Like_school, foreignKey: 'userIdx' },);
 
 module.exports = db;

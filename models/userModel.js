@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false,
         },
-        check: { // 학교 인증 했는지 안했는지
+        emailCheck: { // 학교 인증 했는지 안했는지
             type: DataTypes.BOOLEAN,
             defaultValue: 0,
         },
@@ -49,8 +49,17 @@ module.exports = (sequelize, DataTypes) => {
         gender: {
             type: DataTypes.STRING(30),
         },
+        createdAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        },
+        updatedAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
+            allowNull: false
+        }
     }, {
         freezeTableName: true,
-        timestamps: true,
     });
 };
